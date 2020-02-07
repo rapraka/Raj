@@ -1,0 +1,62 @@
+import pandas as pd
+from sas7bdat import SAS7BDAT
+with SAS7BDAT('C:/Users/rajla/Desktop/3rd Semester/BAN/Excercise_4_BAN/enrollment_data_updated.sas7bdat') as file:
+    df_pc = file.to_data_frame()
+df_pc_drped = df_pc.drop(['ACADEMIC_INTEREST_1','ACADEMIC_INTEREST_2','CAMPUS_VISIT_2','CONTACT_CODE1','Contact_Date','Contact_Month','Contact_Year','ETHNICITY','ID','IRSCHOOL','Instate','LEVEL_YEAR','TERRITORY','interest'], axis=1)
+
+df_pc_drped = df_pc_drped.dropna(axis=0, how='any', thresh=None, subset=None, inplace=False)
+
+df_pc_1 = df_pc.copy()
+df_pc_1=df_pc_1.dropna(axis=0, how='any', thresh=None, subset=None, inplace=False)
+df_pc_1.head()
+
+df_pc_2 = df_pc_1[['CONTACT_CODE1','Contact_Date','Contact_Month','Contact_Year','ETHNICITY','IRSCHOOL','TERRITORY']]
+df_pc_2.head()
+
+df_pc_drped.dtypes
+
+x = df_pc_drped[['avg_income', 'CAMPUS_VISIT', 'distance', 'hscrat', 'init_span', 'int1rat', 'int2rat','mailq', 'premiere', 'REFERRAL_CNTCTS', 'satscore', 'SELF_INIT_CNTCTS', 'sex', 'SOLICITED_CNTCTS', 'telecq', 'TOTAL_CONTACTS', 'TRAVEL_INIT_CNTCTS']]
+
+
+y = df_pc_drped['Target']
+
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+x_std = StandardScaler().fit_transform(x)
+
+
+features = x_std.T
+covariance_matrix = np.cov(features)
+print(covariance_matrix)
+
+
+eig_vals, eig_vecs = np.linalg.eig(covariance_matrix)
+print('Eigenvectors \n%s' %eig_vecs)
+print('Eigenvalues \n%s' %eig_vals)
+
+
+Variance = eig_vals/17
+
+print(Variance)
+
+k = 0
+print('PC', '    Variance', '            Cumulative_Variance' )
+for i in range(len(Variance)):
+    if k<0.70:
+        k = k+Variance[i]
+        print( i+1,'  ', Variance[i],'   ', k)
+
+from sklearn.decomposition import PCA
+
+pca = PCA(n_components=10)
+principalComponents = pca.fit_transform(x)
+principalDf = pd.DataFrame(data = principalComponents, columns = ['principal component 1', 'principal component 2','principal component 3', 'principal component 4','principal component 5', 'principal component 6', 'principal component 7', 'principal component 8','principal component 9', 'principal component 10'])
+
+
+finalDf = pd.concat([principalDf, y], axis = 1)
+
+finalDf_new =finalDf.dropna(axis=0, how='any', thresh=None, subset=None, inplace=False)
+finalDf_new.head()
+
+
+
