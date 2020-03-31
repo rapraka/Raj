@@ -49,7 +49,10 @@ https://github.com/rapraka/Raj/blob/master/Timeseries_Raj.ipynb
 
 # Customer Life Time Value
 Data Prep: https://github.com/rapraka/Raj/blob/master/01%20OSU_CLV_Data_Prep%20(1).ipynb
+
 Churn_Modeling: https://github.com/rapraka/Raj/blob/master/02%20OSU_CLV_Churn_Modeling.ipynb
+
 Margin_Modeling: https://github.com/rapraka/Raj/blob/master/03%20OSU_CLV_Margin_Modeling.ipynb
+
 CLV_Calculation : https://github.com/rapraka/Raj/blob/master/04%20OSU_CLV_Calculations.ipynb
 
