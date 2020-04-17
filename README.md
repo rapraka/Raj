@@ -1,9 +1,12 @@
 # Machine Learning Concepts
 
 
+
+
+
 # H-1B Prediction
 
-Data Set: https://www.kaggle.com/jonamjar/h1b-data-set-2017
+Data Source: https://www.kaggle.com/jonamjar/h1b-data-set-2017
 
 Data Description and Meta Data: https://github.com/rapraka/Raj/blob/master/h1b-2017-metadata.pdf
 
