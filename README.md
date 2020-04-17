@@ -1,6 +1,10 @@
 # Machine Learning Concepts
 
+# Student Retention Predition 
 
+Data Source: Oklahoma State University
+
+Analysis code: https://github.com/rapraka/Raj/blob/master/Student_Retention.ipynb
 
 
 
@@ -17,17 +21,6 @@ Data Cleaning : https://github.com/rapraka/Raj/blob/master/Data%20Cleaning_H1B.e
 
 
 
-
-
-
-
-
-
-#Student Retention Predition 
-
-Data Source: Oklahoma State University
-
-Analysis code: https://github.com/rapraka/Raj/blob/master/Student_Retention.ipynb
 
 
 # Variable Selection Methods
